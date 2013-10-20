@@ -30,5 +30,7 @@ TrickOrTreat_AddCostume( Costume( "snurtle", "a snurtle", {armorsnurtleshell=1},
 TrickOrTreat_AddCostume( Costume( "tmnsnurtle", "a Teenage Mutant Ninja Snurtle", {armorsnurtleshell=1, flowerhat=0.75, spear=1}, 2.75 ) ) -- don't have the right items to do this properly, but I couldn't resist
 TrickOrTreat_AddCostume( Costume( "batman", "Batman", {armor_sanity=1, boomerang=1}, 2 ) )
 TrickOrTreat_AddCostume( Costume( "dovahkiin", "the Dovahkiin", {beefalohat=0.5, armormarble=0.75, nightsword=0.75}, 2 ) )
+TrickOrTreat_AddCostume( Costume( "metaldetector", "a metal detector", {diviningrod=1, footballhat=1, earmuffshat=1}, 2 ) )
+TrickOrTreat_AddCostume( Costume( "indianajones", "Indiana Jones", {strawhat=1, shovel=0.5, goldenshovel=0.75}, 1.5 ) )
 
 return costumes

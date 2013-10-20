@@ -14,7 +14,6 @@ local print = GLOBAL.print
 local require = GLOBAL.require
 local STRINGS = GLOBAL.STRINGS
 local TUNING = GLOBAL.TUNING
-local TheCamera = GLOBAL.TheCamera
 local GetWorld = GLOBAL.GetWorld
 local SpawnPrefab = GLOBAL.SpawnPrefab
 local Vector3 = GLOBAL.Vector3
@@ -161,7 +160,7 @@ local function MakeHouseTrickOrTreatable( house, settings )
 			local decoration = SpawnPrefab("pumpkin_lantern")
 			decoration.persists = false
 
-			local pt = Vector3(house.Transform:GetWorldPosition()) + TheCamera:GetDownVec() * 1 - TheCamera:GetRightVec() * 1
+			local pt = Vector3(house.Transform:GetWorldPosition()) + GLOBAL.TheCamera:GetDownVec() * 1 - GLOBAL.TheCamera:GetRightVec() * 1
 			decoration.Transform:SetPosition( pt:Get() )
 			decoration.components.inventoryitem.canbepickedup = false
 

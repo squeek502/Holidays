@@ -35,6 +35,14 @@ end
 
 function MakeHalloween()
 	ishalloween = true
+
+	-- halloween has a dusk that is twice as long and a night that is twice as short
+	local clock = GetClock()
+	local newnightsegs = clock:GetNightSegs() / 2
+	local newdusksegs = clock:GetDuskSegs() * 2
+	local newdaysegs = 16 - newdusksegs - newnightsegs
+	clock:SetSegs( newdaysegs, newdusksegs, newnightsegs )
+
 	GetWorld():PushEvent("halloweenstart")
 end
 
