@@ -1,5 +1,5 @@
 *.jpg
-
 *.psd
-
-/modicon.png
+/*.png
+anim/*.tex
+anim/*.bin
