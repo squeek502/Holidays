@@ -1,9 +1,6 @@
-require "trickortreat.halloween"
-local costumes = require "trickortreat.costumes"
-
 local Costumed = Class(function(self, inst)
 	self.inst = inst
-	self:DetermineCostume()
+	self.costumes = {}
 
 	self.inst:ListenForEvent("equip", function()
 		self:DetermineCostume()
@@ -35,16 +32,6 @@ function Costumed:SetCostume( costume, wornvalue )
 	if oldcostume ~= self.costume then
 		--print( tostring(self.inst).." changed costume from "..tostring(oldcostume).." to "..tostring(self.costume) )
 		self.inst:PushEvent("costumechange", { oldcostume=oldcostume, oldwornvalue=oldwornvalue, costume=self.costume, wornvalue=self.wornvalue })
-
-		-- announce costume changes on Halloween
-		if self.costume and self.inst.components.talker and IsHalloween() then
-			local costumename = self:GetCostumeName()
-
-			-- so, so hacky, but as far as I can tell this is the best way to do this
-			if self.inst.prefab == "wx78" then costumename = string.upper(costumename) end
-
-			self.inst.components.talker:Say( string.format( GetString( self.inst.prefab, "TRICKORTREAT", "DRESSED_AS_SOMETHING" ), costumename ) )
-		end
 	end
 end
 
@@ -65,7 +52,7 @@ function Costumed:DetermineCostume()
 
     if #equippeditems > 0 then
 
-		for _,costume in ipairs(costumes) do
+		for _,costume in ipairs(self.costumes) do
 			local wornvalue = costume:GetCostumeWornValue( equippeditems )
 			if wornvalue > bestwornvalue then
 				bestcostume = costume

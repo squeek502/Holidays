@@ -1,4 +1,4 @@
-local Costume = require "trickortreat.costume"
+local Costume = require "holidays.halloween.costume"
 
 local costumes = {}
 

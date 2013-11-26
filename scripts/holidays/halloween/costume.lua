@@ -22,7 +22,7 @@ function Costume:GetCostumeWornValue( wornitems )
 			wornvalue = wornvalue + self.pieces[ wornitem.prefab ]
 		else
 			-- any worn items that aren't part of the costume detract from it
-			wornvalue = wornvalue + TUNING.TRICKORTREAT.COSTUME_WRONG_ITEM_VALUE
+			wornvalue = wornvalue + TUNING.HOLIDAYS.HALLOWEEN.COSTUME_WRONG_ITEM_VALUE
 		end
 	end
 

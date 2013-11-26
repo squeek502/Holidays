@@ -1,5 +1,3 @@
-require "trickortreat.halloween"
-
 local TrickOrTreatable = Class(function(self, inst)
 	self.inst = inst
 	self.trickortreater = nil
@@ -78,13 +76,13 @@ end
 function TrickOrTreatable:GetCantTrickOrTreatReason( trickortreater )
 	trickortreater = trickortreater or GetPlayer()
 
-	if TUNING.TRICKORTREAT.CAN_ONLY_TRICKORTREAT_ON_HALLOWEEN and not IsHalloween() then
+	if TUNING.HOLIDAYS.HALLOWEEN.CAN_ONLY_TRICKORTREAT_ON_HALLOWEEN and not IsHoliday( "halloween" ) then
 		return GetString( trickortreater.prefab, "TRICKORTREAT", "NOT_HALLOWEEN" )
-	elseif not TUNING.TRICKORTREAT.CAN_TRICKORTREAT_DURING_DAY and GetClock():IsDay() then
+	elseif not TUNING.HOLIDAYS.HALLOWEEN.CAN_TRICKORTREAT_DURING_DAY and GetClock():IsDay() then
 		return GetString( trickortreater.prefab, "TRICKORTREAT", "NOT_ALLOWED_DURING_DAY" )
-	elseif not TUNING.TRICKORTREAT.CAN_TRICKORTREAT_DURING_NIGHT and GetClock():IsNight() then
+	elseif not TUNING.HOLIDAYS.HALLOWEEN.CAN_TRICKORTREAT_DURING_NIGHT and GetClock():IsNight() then
 		return GetString( trickortreater.prefab, "TRICKORTREAT", "NOT_ALLOWED_DURING_NIGHT" )
-	elseif not TUNING.TRICKORTREAT.CAN_TRICKORTREAT_DURING_DUSK and GetClock():IsDusk() then
+	elseif not TUNING.HOLIDAYS.HALLOWEEN.CAN_TRICKORTREAT_DURING_DUSK and GetClock():IsDusk() then
 		return GetString( trickortreater.prefab, "TRICKORTREAT", "NOT_ALLOWED_DURING_DUSK" )
 	elseif not self:HasTreats() then
 		return GetString( trickortreater.prefab, "TRICKORTREAT", "NO_TREATS_TO_GIVE" )
@@ -96,7 +94,7 @@ function TrickOrTreatable:GetCantTrickOrTreatReason( trickortreater )
 end
 
 function TrickOrTreatable:CollectSceneActions(doer, actions)
-	if (not TUNING.TRICKORTREAT.CAN_ONLY_TRICKORTREAT_ON_HALLOWEEN or IsHalloween()) and self.trickortreater ~= doer and not doer.trickortreating and doer.components.costumed then
+	if (not TUNING.HOLIDAYS.HALLOWEEN.CAN_ONLY_TRICKORTREAT_ON_HALLOWEEN or IsHoliday( "halloween" )) and self.trickortreater ~= doer and not doer.trickortreating and doer.components.costumed then
 		if self:CanTrickOrTreat( doer ) then
 			table.insert(actions, ACTIONS.TRICKORTREAT)
 		else

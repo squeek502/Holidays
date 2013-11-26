@@ -1,6 +1,7 @@
 --[[
 	Add strings
 ]]--
+local STRINGS = GLOBAL.STRINGS
 
 if not STRINGS.PIGHOUSE then STRINGS.PIGHOUSE = {} end
 STRINGS.PIGHOUSE.TRICKORTREAT = {
