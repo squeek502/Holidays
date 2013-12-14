@@ -16,7 +16,7 @@ UIClock._ctor = function( self, ... )
 	self.holidayanim:GetAnimState():PlayAnimation("hidden")
 
 	self.holidaytext = self:AddChild(Text(NUMBERFONT, 30/self.base_scale))
-	self.holidaytext:SetPosition(-81,-32,0)
+	self.holidaytext:SetPosition(-81,-24,0)
 	self.holidaytext:Hide()
 	self.holidaytext:MoveToFront()
 
