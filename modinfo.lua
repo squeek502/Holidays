@@ -1,8 +1,8 @@
 -- This information tells other players more about the mod
-name = "Trick-or-Treat"
-description = "Makes it possible to trick-or-treat at pig and rabbit houses when it's Halloween in Don't Starve. You'll need to dress up in order to receive treats!"
+name = "Holidays"
+description = "Adds holidays to the world of Don't Starve"
 author = "squeek"
-version = "1.1.0"
+version = "1.0"
 
 -- This is the URL name of the mod's thread on the forum; the part after the ? and before the first & in the url
 -- Example:
