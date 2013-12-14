@@ -12,7 +12,7 @@ local CalendarDay = Class(Widget, function(self, daynum, holiday, ispast, iscurr
 	self.iscurrent = iscurrent
 	self.isinactive = isinactive
 
-	self.bg = self:AddChild(ImageButton("images/hud/calendar/day.xml", "day.tex"))
+	self.bg = self:AddChild(ImageButton("images/hud/calendar/day.xml", "day.tex", "day_hover.tex"))
     self.bg:SetPosition(0,0,0)
 	self.bg:SetText( daynum )
 	self.bg.text:SetColour(0,0,0,1)
@@ -49,8 +49,11 @@ local CalendarDay = Class(Widget, function(self, daynum, holiday, ispast, iscurr
     	--self.bg.image:SetTint(1,.75,.75,1)
     end
 
-	self.bg.OnGainFocus = ImageButton._base.OnGainFocus
-	self.bg.OnLoseFocus = ImageButton._base.OnLoseFocus
+    local OnGainFocus_ImageButton_base = self.bg.OnGainFocus
+	self.bg.OnGainFocus = function(btn) OnGainFocus_ImageButton_base(btn); self.bg.image:SetSize( self:GetSize() ) end
+    local OnLoseFocus_ImageButton_base = self.bg.OnLoseFocus
+	self.bg.OnLoseFocus = function(btn) OnLoseFocus_ImageButton_base(btn); self.bg.image:SetSize( self:GetSize() ) end
+	--self.bg.OnLoseFocus = ImageButton._base.OnLoseFocus
 	self.bg.Enable = ImageButton._base.Enable
 	self.bg.Disable = ImageButton._base.Disable
 

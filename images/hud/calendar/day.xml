@@ -1,1 +1,1 @@
-<Atlas><Texture filename="day.tex" /><Elements><Element name="day.tex" u1="0.0" u2="1.0" v1="0.0" v2="1.0" /></Elements></Atlas>
+<Atlas><Texture filename="day.tex" /><Elements><Element name="day.tex" u1="0.0" u2="0.5" v1="0.0" v2="1.0" /><Element name="day_hover.tex" u1="0.5" u2="1.0" v1="0.0" v2="1.0" /></Elements></Atlas>
