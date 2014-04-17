@@ -3,6 +3,7 @@ local CalendarDay = require "holidays.widgets.calendar.day"
 local ImageButton = require "widgets/imagebutton"
 local Image = require "widgets/image"
 local Text = require "widgets/text"
+local HolidaysUtil = require "holidays.util"
 
 local CalendarPage = Class(Widget, function(self)
 	Widget._ctor(self, "CalendarPage")
@@ -35,7 +36,7 @@ local CalendarPage = Class(Widget, function(self)
     self.previous_season_length = 0
 
     self.seasontitle = self:AddChild(Text(BODYTEXTFONT, 40))
-    self.seasontitle:SetPosition(0, 205)
+    self.seasontitle:SetPosition(0, 200)
     self.seasontitle:SetColour(1,1,1,1)
 
 	self:ShowSeason( GetSeasonManager().current_season )
@@ -127,7 +128,9 @@ function CalendarPage:ShowSeason( season, backwards )
 	else
 		self.leftbutton:Hide()
 	end
-    self.seasontitle:SetString( self.current_season )
+
+	local current_year = math.floor( self.current_day_offset / seasonmanager:GetYearLength() ) + 1
+    self.seasontitle:SetString( "Year "..HolidaysUtil.capitalize( HolidaysUtil.numbertoword( current_year ) )..": "..HolidaysUtil.capitalize( self.current_season ) )
 end
 
 function CalendarPage:GetNumPerRowAndCol( x, y, n )
